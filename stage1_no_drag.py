@@ -1,36 +1,36 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#step1
-v0 = 30 #m/s
-theta_deg = 60 #degrees
-g = 9.81 #m/s^2
+# step 1
+v0 = 30  # m/s
+theta_deg = 60  # degrees
+g = 9.81  # m/s^2
 
-#step2
+# step 2
 theta_rad = np.deg2rad(theta_deg)
 
-#step3
+# step 3
 vx = v0*np.cos(theta_rad)
 vy = v0*np.sin(theta_rad)
 
-#step4
+# step 4
 t_top = vy/g
 
-#step5
+# step 5
 t = 2*t_top
 
-#step6
+# step 6
 H = vy*t_top + 0.5*(-g)*t_top**2
 
-#step7
+# step 7
 R = vx*t
 
-#step8
+# step 8
 times = np.linspace(0, t, 10000)
 x = vx*times
 y = vy*times + 0.5*(-g)*times**2
 
-#step9
+# step 9
 print(f"R = {R:.2f} m")
 print(f"H = {H:.2f} m")
 print(f"t = {t:.2f} s")
