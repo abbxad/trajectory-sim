@@ -7,7 +7,7 @@
 - the object is a football
 - air density rho = 1.225, kilograms per meter cubed
 - drag coefficient Cd = 0.47, dimensionless (smooth sphere)
-- frontal area A = 0.038, meters squared (radius 0.11m)
+- frontal area A = 0.038, meters squared (radius 0.11 m)
 - mass m = 0.43, kilograms
 - step size dt, seconds
 - starting height = 0 m
@@ -40,7 +40,7 @@
 - v0 = 50 m/s, angle θ = 45°, g = 9.81 m/s², dt = 0.01 s, starting height = 0 m
 - turn drag off by setting Cd = 0, k = 0, ax = 0, ay = -g
 - exact answer with no drag: `vx = 50 * cos(45°) = 35.355 m/s`, `vy = 50 * sin(45°) = 35.355 m/s`, `t = 2*vy / g = 7.208 s`, `H = vy^2 / (2*g) = 63.71 m`, `R = vx * t = 254.842 m`
-- the simulation should give R close to 255.195 m, using Euler with dt = 0.01s
+- the simulation should give R close to 255.195 m, using Euler with dt = 0.01 s
 - the two do not match exactly because Euler uses vertical speed at the start of each step for the whole step, even though the ball is slowing down during it. Every step puts the ball slightly too high, so it lands slightly too far
 - pass: R within 0.5 m of 254.842 m. If it is out by metres, check the angle conversion and the landing estimate first
 - halving dt should roughly halve the error, since Euler is first order. For dt = 0.1, 0.01 and 0.001 the ranges should be about 258.374, 255.195 and 254.877
