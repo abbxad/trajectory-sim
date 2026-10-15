@@ -52,7 +52,7 @@ while y >= 0:
     vy = vy_new
     t = t_new
 
-    # step 9 
+    # step 9
     x_list.append(x)
     y_list.append(y)
     t_list.append(t)
