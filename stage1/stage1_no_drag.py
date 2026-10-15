@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 # step 1
 v0 = 30  # m/s
@@ -39,5 +40,5 @@ print(y[-1])
 plt.plot(x, y)
 plt.xlabel("Distance x (m)")
 plt.ylabel("Height y (m)")
-plt.savefig("stage1_trajectory.png")
+plt.savefig(Path(__file__).parent / "stage1_trajectory.png")
 plt.show()

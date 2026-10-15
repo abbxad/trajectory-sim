@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 # step 1
 v0 = 50  # m/s
@@ -78,5 +79,5 @@ plt.plot(x_list, y_list)
 plt.xlabel("Distance x (m)")
 plt.ylabel("Height y (m)")
 plt.title("Football, 50 m/s at 45 degrees, with drag")
-plt.savefig("stage2_trajectory.png")
+plt.savefig(Path(__file__).parent / "stage2_trajectory.png")
 plt.show()

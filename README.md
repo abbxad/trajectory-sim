@@ -36,7 +36,7 @@ For the test case:
 
 ### Plot
 
-![Trajectory of the ball, 30 m/s at 60 degrees](stage1_trajectory.png)
+![Trajectory of the ball, 30 m/s at 60 degrees](stage1/stage1_trajectory.png)
 
 ## Stage 2: with air resistance
 
@@ -78,4 +78,4 @@ Drag shortens the range to about a fifth. The path is no longer symmetrical. The
 
 ### Plot
 
-![Trajectory of a football, 50 m/s at 45 degrees, with air resistance](stage2_trajectory.png)
+![Trajectory of a football, 50 m/s at 45 degrees, with air resistance](stage2/stage2_trajectory.png)
