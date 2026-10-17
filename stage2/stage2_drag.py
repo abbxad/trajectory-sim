@@ -13,7 +13,7 @@ m = 0.43  # kg
 dt = 0.01  # s
 
 # step 2
-theta_rad = np.deg2rad(theta_deg)
+theta_rad = np.deg2rad(theta_deg)  #rad
 
 # step 3
 x = 0  # m
