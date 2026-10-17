@@ -8,7 +8,7 @@ theta_deg = 60  # degrees
 g = 9.81  # m/s^2
 
 # step 2
-theta_rad = np.deg2rad(theta_deg)
+theta_rad = np.deg2rad(theta_deg)  # rad
 
 # step 3
 vx = v0*np.cos(theta_rad)
