@@ -79,3 +79,53 @@ Drag shortens the range to about a fifth. The path is no longer symmetrical. The
 ### Plot
 
 ![Trajectory of a football, 50 m/s at 45 degrees, with air resistance](stage2/stage2_trajectory.png)
+
+## Stage 3: Euler against RK4
+
+### Problem
+
+Stage 2 used Euler's method. This stage compares it with a more accurate method, RK4 (fourth-order Runge-Kutta). The launch is 50 m/s at 45 degrees with g = 9.81 m/s². Both methods run at five time steps, dt = 0.1, 0.03, 0.01, 0.003 and 0.001 s, and each range is compared with a trusted answer. Stage 3A has no air resistance. Stage 3B uses the football from stage 2 (rho = 1.225 kg/m³, Cd = 0.47, A = 0.038 m², m = 0.43 kg).
+
+### Method
+
+**Euler.** Each step uses one reading of the speed and acceleration, taken at the start of the step, and assumes they stay the same for the whole step.
+
+**RK4.** Each step takes four readings: at the start, twice in the middle and at the end. Each reading uses the one before it to decide where to look. The step then uses an average of the four, where the two middle readings count double.
+
+**Landing.** The loop stops at the first step below the ground. From the last point above the ground, the program assumes constant acceleration over the remaining sliver of time and solves a quadratic for it. Both methods use the same rule.
+
+**Error.** Error is `abs(R - answer)`. In 3A the answer is the exact range, 254.842 m. With drag there is no formula, so in 3B the answer is an RK4 run at dt = 0.00001 s, which gives R = 54.985 m. A second run at dt = 0.00002 s differs from it by 3e-12 m. The reference is 100 times finer than the smallest step tested, so no run is marked against itself.
+
+### Result
+
+**3A, no air resistance.** The exact range is 254.842 m.
+
+| dt (s) | Euler error (m) | RK4 error (m) |
+|---|---|---|
+| 0.1 | 3.532 | about 2e-13 |
+| 0.01 | 0.353 | about 2e-12 |
+| 0.001 | 0.035 | about 5e-11 |
+
+Euler's error falls in proportion to dt (slope 1.00). With no drag the path is a parabola, which RK4 follows exactly, so its error is only the computer's rounding. It rises slightly as dt shrinks because smaller steps mean more steps.
+
+**3B, with air resistance.** The reference range is 54.985 m.
+
+| dt (s) | Euler error (m) | RK4 error (m) |
+|---|---|---|
+| 0.1 | 0.957 | 1.6e-4 |
+| 0.03 | 0.262 | 1.0e-6 |
+| 0.01 | 0.085 | 1.6e-8 |
+| 0.003 | 0.025 | 4.1e-9 |
+| 0.001 | 0.008 | 4.6e-11 |
+
+The fitted slope is 1.03 for Euler and 3.09 for RK4. RK4 is about 6,000 times more accurate than Euler at dt = 0.1 and gains about a thousand times in accuracy for each tenfold drop in dt. RK4's step is fourth order, but the fitted slope is nearer 3. The likely cause is the landing rule, which treats the acceleration as constant over the last sliver of time. That has not been tested.
+
+### Plots
+
+Stage 3A, no air resistance:
+
+![Euler vs RK4 error, no drag](stage3/stage3_error.png)
+
+Stage 3B, with air resistance:
+
+![Euler vs RK4 error, with drag](stage3/stage3b_error.png)
